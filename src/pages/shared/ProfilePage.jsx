@@ -143,7 +143,27 @@ export default function ProfilePage() {
   return (
     <div>
       <Title level={4}>Profili</Title>
-      <Tabs defaultActiveKey="info" items={tabs} />
+      <div className="profile-cover" />
+      <div style={{ marginTop: 16 }} className="profile-layout">
+        <div className="profile-sidebar">
+          <Avatar
+            size={120}
+            src={user?.avatarUrl}
+            icon={<UserOutlined />}
+            className="profile-avatar-lg"
+          />
+          <div style={{ marginTop: 8 }}>
+            <Title level={5} className="profile-name">
+              {user?.name}
+            </Title>
+            <Text className="profile-id">{user?.email}</Text>
+          </div>
+        </div>
+
+        <div>
+          <Tabs defaultActiveKey="info" items={tabs} />
+        </div>
+      </div>
     </div>
   );
 }

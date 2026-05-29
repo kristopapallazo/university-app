@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Layout, Menu, Button, Typography, Space, Avatar, Tooltip } from 'antd';
+import { Layout, Menu, Button, Typography, Space, Avatar, Tooltip, Select } from 'antd';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useUiStore } from '@/store/uiStore';
@@ -7,6 +7,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { ROLE_DEFAULT_ROUTES, ROUTES } from '@/router/routes';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import NotificationBell from '@/components/common/NotificationBell';
+import { storage } from '@/utils/storage';
+import { setLocale } from '@/utils/formatters';
 
 const { Sider, Header, Content } = Layout;
 const { Text } = Typography;
@@ -100,14 +102,14 @@ export default function DashboardLayout({ menuItems }) {
         {/* ── Header ── */}
         <Header
           style={{
-            background: '#fff',
             padding: '0 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderBottom: '1px solid #f0f0f0',
-            height: 64,
+            height: 72,
             lineHeight: 'normal',
+            background: 'linear-gradient(90deg, rgba(3,102,214,0.06), rgba(0,86,214,0.02))',
+            borderBottom: '1px solid rgba(3,102,214,0.06)',
           }}
         >
           <Text strong style={{ fontSize: 16 }}>
@@ -116,6 +118,18 @@ export default function DashboardLayout({ menuItems }) {
 
           <Space size="middle" align="center">
             <NotificationBell />
+            <Select
+              value={storage.getLanguage()}
+              onChange={(val) => {
+                storage.setLanguage(val);
+                setLocale(val);
+              }}
+              options={[
+                { label: 'Shqip', value: 'sq' },
+                { label: 'English', value: 'en' },
+              ]}
+              style={{ width: 110 }}
+            />
             <Tooltip title="Profili">
               <Space
                 size={8}
@@ -123,7 +137,11 @@ export default function DashboardLayout({ menuItems }) {
                 onClick={handleProfileClick}
                 style={{ cursor: 'pointer' }}
               >
-                <Avatar src={user?.avatarUrl} icon={<UserOutlined />} />
+                <Avatar
+                  src={user?.avatarUrl}
+                  icon={<UserOutlined />}
+                  style={{ border: '2px solid #fff' }}
+                />
                 <Text>{user?.name}</Text>
               </Space>
             </Tooltip>
