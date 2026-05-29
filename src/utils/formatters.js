@@ -1,7 +1,16 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/sq';
+import 'dayjs/locale/en';
+import { storage } from './storage';
 
-dayjs.locale('sq');
+// initialize locale from storage (default sq)
+const initialLang = storage.getLanguage();
+dayjs.locale(initialLang || 'sq');
+
+export function setLocale(lang) {
+  if (!lang) return;
+  dayjs.locale(lang);
+}
 
 export const formatDate = (date, format = 'DD/MM/YYYY') => {
   if (!date) return '-';

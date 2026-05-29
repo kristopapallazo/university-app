@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Alert, Button, Card, Divider, Form, Input, Typography } from 'antd';
+import { Alert, Button, Card, Divider, Form, Input, Space, Typography } from 'antd';
 import { GoogleOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import logoLocal from '@/assets/university-logo.svg';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLE_DEFAULT_ROUTES, ROUTES } from '@/router/routes';
@@ -58,22 +59,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        background: '#f0f2f5',
-        padding: 16,
-      }}
-    >
-      <Card style={{ width: 400 }}>
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <Title level={3} style={{ marginBottom: 4 }}>
+    <div className="login-wrapper">
+      <Card className="login-card">
+        <div className="brand-header">
+          <img
+            src={logoLocal}
+            alt="UAMD logo"
+            style={{ width: 72, height: 72, objectFit: 'contain' }}
+          />
+          <Title level={3} className="brand-title" style={{ margin: 0 }}>
             UAMD
           </Title>
-          <Text type="secondary">Universiteti Aleksander Moisiu Durrës</Text>
+          <Text className="brand-subtitle">Universiteti Aleksander Moisiu Durrës</Text>
         </div>
 
         {error && (
@@ -118,21 +115,23 @@ export default function LoginPage() {
           </Text>
         </Divider>
 
-        <Button
-          size="large"
-          block
-          icon={<GoogleOutlined />}
-          onClick={handleGoogleLogin}
-          style={{ borderColor: '#4285f4', color: '#4285f4' }}
-        >
-          Hyr me Google
-        </Button>
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Button
+            size="large"
+            block
+            icon={<GoogleOutlined />}
+            onClick={handleGoogleLogin}
+            className="google-btn"
+          >
+            Hyr me Google
+          </Button>
 
-        <div style={{ marginTop: 16, textAlign: 'center' }}>
-          <Text type="secondary" style={{ fontSize: 12 }}>
-            Mund të hyni me llogarinë tuaj Google të universitetit ose me email + fjalëkalim.
-          </Text>
-        </div>
+          <div className="login-footer">
+            <Text type="secondary">
+              Mund të hyni me llogarinë tuaj Google të universitetit ose me email + fjalëkalim.
+            </Text>
+          </div>
+        </Space>
       </Card>
     </div>
   );

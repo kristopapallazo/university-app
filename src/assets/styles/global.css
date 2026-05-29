@@ -21,6 +21,128 @@ body {
   min-height: 100vh;
 }
 
+/* Theme variables */
+:root {
+  --primary-color: #0056d6;
+  --accent-color: #00b894;
+  --google-blue: #4285f4;
+  --background-gradient: linear-gradient(120deg, #0f172a 0%, #0366d6 100%);
+  --card-bg: #ffffff;
+  --muted-text: #6b7280;
+}
+
+/* Login page */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: var(--background-gradient);
+}
+
+.login-card {
+  width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+  background: var(--card-bg);
+  padding: 24px 28px;
+}
+
+/* Profile enhancements */
+.profile-cover {
+  height: 120px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(90deg, rgba(3, 102, 214, 0.12), rgba(0, 86, 214, 0.08));
+  margin: -24px -28px 16px -28px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+.profile-sidebar {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.profile-avatar-lg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;
+  border: 4px solid var(--card-bg);
+  box-shadow: 0 6px 18px rgba(3, 102, 214, 0.12);
+}
+
+.profile-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.profile-id {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+.profile-major {
+  color: var(--muted-text);
+  margin-top: 6px;
+}
+
+.settings-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* Small modern tweaks for dashboard content */
+.ant-layout-header {
+  background: linear-gradient(90deg, #ffffff, #f8fbff) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.ant-layout-content {
+  background: transparent !important;
+}
+
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.brand-title {
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 0.6px;
+}
+
+.brand-subtitle {
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.google-btn {
+  border-color: var(--google-blue) !important;
+  color: var(--google-blue) !important;
+}
+
+.login-footer {
+  margin-top: 16px;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 12px;
+}
 /* Utility */
 .full-height {
   height: 100%;

@@ -10,8 +10,7 @@ const axiosInstance = axios.create({
     'Content-Type': 'application/json',
     // Tell Laravel to render error responses as JSON (e.g. 401 instead of HTML 500)
     Accept: 'application/json',
-    // Tell backend to return error messages in Albanian
-    'Accept-Language': 'sq',
+    // Default Accept-Language will be set per-request from storage below
   },
 });
 
@@ -19,8 +18,12 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = storage.getToken();
+    const lang = storage.getLanguage();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+    if (lang) {
+      config.headers['Accept-Language'] = lang;
     }
     return config;
   },
