@@ -3,6 +3,11 @@
 Portali web i Universitetit Aleksander Moisiu Durrës.  
 Projekt akademik për lëndët **Database** dhe **Advanced Web**.
 
+## Contributors
+
+- @kristopapallazo
+- @memishajklaudio-ctrl
+
 > **Stack:** React 19 · Vite · Ant Design 5 · React Router v6 · Zustand · Axios
 
 ---
