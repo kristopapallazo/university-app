@@ -17,6 +17,11 @@ const OAuthCallbackPage = lazy(() => import('@/pages/auth/OAuthCallbackPage'));
 // Shared
 const ProfilePage = lazy(() => import('@/pages/shared/ProfilePage'));
 
+// Public pages
+const PublicHomePage = lazy(() => import('@/pages/public/PublicHomePage'));
+const PublicNewsPage = lazy(() => import('@/pages/public/PublicNewsPage'));
+const PublicAcademiaPage = lazy(() => import('@/pages/public/PublicAcademiaPage'));
+
 // Student pages
 const BallinaStudentPage = lazy(() => import('@/pages/student/BallinaPage'));
 const NotatPage = lazy(() => import('@/pages/student/NotatPage'));
@@ -37,14 +42,18 @@ const RaportetPage = lazy(() => import('@/pages/admin/RaportetPage'));
 const NjoftimetPage = lazy(() => import('@/pages/admin/NjoftimetPage'));
 
 const router = createBrowserRouter([
-  { path: ROUTES.HOME, element: <Navigate to={ROUTES.LOGIN} replace /> },
+  { path: ROUTES.HOME, element: <Navigate to={ROUTES.PUBLIC.ROOT} replace /> },
   { path: ROUTES.LOGIN, element: <LoginPage /> },
   { path: ROUTES.AUTH_CALLBACK, element: <OAuthCallbackPage /> },
 
   {
     path: ROUTES.PUBLIC.ROOT,
     element: <PublicLayout />,
-    children: [],
+    children: [
+      { index: true, element: <PublicHomePage /> },
+      { path: 'lajme', element: <PublicNewsPage /> },
+      { path: 'akademia', element: <PublicAcademiaPage /> },
+    ],
   },
 
   // Student portal

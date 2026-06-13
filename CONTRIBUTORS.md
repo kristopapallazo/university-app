@@ -1,4 +1,3 @@
 # Contributors
 
 - @kristopapallazo
-- @memishajklaudio-ctrl

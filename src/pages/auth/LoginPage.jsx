@@ -38,6 +38,20 @@ export default function LoginPage() {
     }
   }, [searchParams, navigate]);
 
+  const benefits = [
+    'Hyni në portalin e universitetit me email ose Google.',
+    'Merrni akses të sigurt te orari, faturat dhe notat.',
+    'Dashboard i personalizuar për secilin rol përdoruesi.',
+  ];
+  const [activeBenefit, setActiveBenefit] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveBenefit((current) => (current + 1) % benefits.length);
+    }, 3600);
+    return () => clearInterval(interval);
+  }, [benefits.length]);
+
   const onFinish = async ({ email, password }) => {
     if (loading) return; // guard against double-submit (Enter key + click)
     setLoading(true);
@@ -68,12 +82,12 @@ export default function LoginPage() {
         padding: 16,
       }}
     >
-      <Card style={{ width: 400 }}>
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+      <Card className="login-card" style={{ width: 420 }}>
+        <div className="login-hero">
           <Title level={3} style={{ marginBottom: 4 }}>
             UAMD
           </Title>
-          <Text type="secondary">Universiteti Aleksander Moisiu Durrës</Text>
+          <Text type="secondary">Portali i Universitetit Aleksander Moisiu Durrës</Text>
         </div>
 
         {error && (
@@ -118,6 +132,10 @@ export default function LoginPage() {
           </Text>
         </Divider>
 
+        <div className="login-feature" style={{ marginBottom: 24 }}>
+          <Text strong>{benefits[activeBenefit]}</Text>
+        </div>
+
         <Button
           size="large"
           block
@@ -128,7 +146,7 @@ export default function LoginPage() {
           Hyr me Google
         </Button>
 
-        <div style={{ marginTop: 16, textAlign: 'center' }}>
+        <div className="login-footer-text">
           <Text type="secondary" style={{ fontSize: 12 }}>
             Mund të hyni me llogarinë tuaj Google të universitetit ose me email + fjalëkalim.
           </Text>
