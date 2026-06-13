@@ -7,6 +7,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { ROLE_DEFAULT_ROUTES, ROUTES } from '@/router/routes';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import NotificationBell from '@/components/common/NotificationBell';
+import DijaFloatButton from '@/components/dija/DijaFloatButton';
 
 const { Sider, Header, Content } = Layout;
 const { Text } = Typography;
@@ -132,6 +133,9 @@ export default function DashboardLayout({ menuItems }) {
             </Button>
           </Space>
         </Header>
+
+        {/* ── Dija float button (visible on all authenticated pages) ── */}
+        <DijaFloatButton />
 
         {/* ── Content ── */}
         <Content
