@@ -50,25 +50,8 @@ export default function NotificationBell() {
   };
 
   const dropdownContent = (
-    <div
-      style={{
-        width: 340,
-        background: '#fff',
-        borderRadius: 8,
-        boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
-        maxHeight: 400,
-        overflowY: 'auto',
-      }}
-    >
-      <div
-        style={{
-          padding: '12px 16px',
-          borderBottom: '1px solid #f0f0f0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+    <div className="notification-dropdown">
+      <div className="notification-header">
         <Text strong>Njoftimet</Text>
         {unreadCount > 0 && (
           <Button size="small" type="link" icon={<CheckOutlined />} onClick={handleMarkAll}>
@@ -84,11 +67,7 @@ export default function NotificationBell() {
           dataSource={notifications}
           renderItem={(n) => (
             <List.Item
-              style={{
-                padding: '10px 16px',
-                background: n.isRead ? '#fff' : '#f0f7ff',
-                cursor: 'pointer',
-              }}
+              className={`notification-item ${n.isRead ? '' : 'unread'}`}
               onClick={() => !n.isRead && handleMarkOne(n.id)}
             >
               <List.Item.Meta

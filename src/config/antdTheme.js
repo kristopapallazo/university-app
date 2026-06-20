@@ -3,13 +3,17 @@
 
 export const antdTheme = {
   token: {
-    colorPrimary: '#003087',
+    colorPrimary: '#1255CC',
+    colorSecondary: '#0ea5a4',
+    colorInfo: '#1761d6',
     colorSuccess: '#389e0d',
     colorWarning: '#d46b08',
     colorError: '#cf1322',
+    colorTextBase: '#1f2937',
+    colorBgContainer: '#ffffff',
     borderRadius: 6,
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    fontSize: 14,
+    fontFamily: "'Inter', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontSize: 15,
   },
   components: {
     Layout: {
