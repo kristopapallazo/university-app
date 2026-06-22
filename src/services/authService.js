@@ -11,4 +11,5 @@ export const authService = {
   me: () => axiosInstance.get('/api/v1/auth/me', skipErrorNotification),
   changePassword: (payload) =>
     axiosInstance.put('/api/v1/auth/password', payload, skipErrorNotification),
+  updateProfile: (payload) => axiosInstance.put('/api/v1/auth/profile', payload),
 };
