@@ -57,6 +57,61 @@ function ProfileInfo({ user }) {
   );
 }
 
+function ProfileEditor({ user }) {
+  const [form] = Form.useForm();
+
+  const onFinish = async (values) => {
+    try {
+      const res = await authService.updateProfile({
+        name: values.name,
+        email: values.email,
+      });
+      notification.success({ message: res.message ?? 'Profili u përditësua me sukses.' });
+      form.resetFields();
+    } catch (err) {
+      const msg = err?.response?.data?.message ?? 'Përditësimi i profilit dështoi.';
+      notification.error({ message: msg });
+    }
+  };
+
+  return (
+    <Card style={{ maxWidth: 540 }}>
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={{ name: user?.name, email: user?.email }}
+        requiredMark={false}
+      >
+        <Form.Item
+          name="name"
+          label="Emri"
+          rules={[{ required: true, message: 'Emri është i detyrueshëm.' }]}
+        >
+          <Input placeholder="Emri dhe mbiemri" />
+        </Form.Item>
+
+        <Form.Item
+          name="email"
+          label="Email"
+          rules={[
+            { required: true, message: 'Email është i detyrueshëm.' },
+            { type: 'email', message: 'Shkruaj një email të vlefshëm.' },
+          ]}
+        >
+          <Input placeholder="Email" />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Ruaj ndryshimet
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
+  );
+}
+
 function ChangePasswordForm() {
   const [form] = Form.useForm();
 
@@ -133,6 +188,7 @@ export default function ProfilePage() {
 
   const tabs = [
     { key: 'info', label: 'Informacionet e Mia', children: <ProfileInfo user={user} /> },
+    { key: 'edit', label: 'Ndrysho Profilin', children: <ProfileEditor user={user} /> },
     canChangePassword && {
       key: 'password',
       label: 'Ndrysho Fjalëkalimin',

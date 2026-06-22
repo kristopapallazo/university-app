@@ -25,11 +25,13 @@ export const MENU_CONFIG = {
       ],
     },
     { key: ROUTES.STUDENT.ORARI, icon: <ScheduleOutlined />, label: 'Orari' },
+    { key: ROUTES.STUDENT.FEEDBACK, icon: <FileTextOutlined />, label: 'Feedback' },
   ],
   pedagog: [
     { key: ROUTES.PEDAGOG.ROOT, icon: <HomeOutlined />, label: 'Ballina' },
     { key: ROUTES.PEDAGOG.RAPORTET, icon: <BarChartOutlined />, label: 'Raportet' },
     { key: ROUTES.PEDAGOG.ORARI, icon: <ScheduleOutlined />, label: 'Orari' },
+    { key: ROUTES.PEDAGOG.FEEDBACK, icon: <FileTextOutlined />, label: 'Feedback' },
   ],
   admin: [
     { key: ROUTES.ADMIN.ROOT, icon: <HomeOutlined />, label: 'Ballina' },
@@ -38,5 +40,6 @@ export const MENU_CONFIG = {
     { key: ROUTES.ADMIN.LENDET, icon: <BookOutlined />, label: 'Lëndët' },
     { key: ROUTES.ADMIN.RAPORTET, icon: <BarChartOutlined />, label: 'Raportet' },
     { key: ROUTES.ADMIN.NJOFTIMET, icon: <BellOutlined />, label: 'Njoftimet' },
+    { key: ROUTES.ADMIN.FEEDBACK, icon: <FileTextOutlined />, label: 'Feedback' },
   ],
 };

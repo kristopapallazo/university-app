@@ -1,7 +1,7 @@
 # UAMD University App — Frontend
 
 Portali web i Universitetit Aleksander Moisiu Durrës.  
-Projekt akademik për lëndët **Database** dhe **Advanced Web**.
+Projekti shkollor universitar për lëndët **Databazë e avancuar II** dhe **Programim në Web i avancuar**. Semestri i dytë. 2025-2026.
 
 ## Contributors
 

@@ -16,6 +16,7 @@ const OAuthCallbackPage = lazy(() => import('@/pages/auth/OAuthCallbackPage'));
 
 // Shared
 const ProfilePage = lazy(() => import('@/pages/shared/ProfilePage'));
+const FeedbackPage = lazy(() => import('@/pages/shared/FeedbackPage'));
 
 // Public pages
 const PublicHomePage = lazy(() => import('@/pages/public/PublicHomePage'));
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
       { path: 'notat', element: <NotatPage /> },
       { path: 'fatura', element: <FaturePage /> },
       { path: 'orari', element: <OrariStudentPage /> },
+      { path: 'feedback', element: <FeedbackPage /> },
       { path: 'profili', element: <ProfilePage /> },
     ],
   },
@@ -85,6 +87,7 @@ const router = createBrowserRouter([
       { index: true, element: <BallinaPedagogPage /> },
       { path: 'raportet', element: <RaportetPedagogPage /> },
       { path: 'orari', element: <OrariPedagogPage /> },
+      { path: 'feedback', element: <FeedbackPage /> },
       { path: 'profili', element: <ProfilePage /> },
     ],
   },
@@ -104,6 +107,7 @@ const router = createBrowserRouter([
       { path: 'lendet', element: <LendetPage /> },
       { path: 'raportet', element: <RaportetPage /> },
       { path: 'njoftimet', element: <NjoftimetPage /> },
+      { path: 'feedback', element: <FeedbackPage /> },
       { path: 'profili', element: <ProfilePage /> },
     ],
   },

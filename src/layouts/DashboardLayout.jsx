@@ -1,14 +1,15 @@
 import { Suspense } from 'react';
-import { Layout, Menu, Button, Typography, Space, Avatar, Tooltip } from 'antd';
+import { Layout, Menu, Button, Typography, Space, Avatar, Tooltip, message } from 'antd';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useUiStore } from '@/store/uiStore';
 import { useAuth } from '@/hooks/useAuth';
+import { authService } from '@/services/authService';
 import { ROLE_DEFAULT_ROUTES, ROUTES } from '@/router/routes';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import NotificationBell from '@/components/common/NotificationBell';
 
-const { Sider, Header, Content } = Layout;
+const { Sider, Header, Content, Footer } = Layout;
 const { Text } = Typography;
 
 const PROFILE_ROUTES = {
@@ -63,6 +64,17 @@ export default function DashboardLayout({ menuItems }) {
     if (route) navigate(route);
   };
 
+  const handleHelpClick = async () => {
+    try {
+      const res = await authService.me();
+      message.success(
+        `Përshëndetje, ${res.data.name}! Ky është një prototip i portalit universitar.`
+      );
+    } catch {
+      message.error('Nuk mund të merrni informacionin e përdoruesit.');
+    }
+  };
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       {/* ── Sidebar ── */}
@@ -115,6 +127,9 @@ export default function DashboardLayout({ menuItems }) {
           </Text>
 
           <Space size="middle" align="center">
+            <Button type="default" onClick={handleHelpClick}>
+              Ndihmë
+            </Button>
             <NotificationBell />
             <Tooltip title="Profili">
               <Space
@@ -149,6 +164,18 @@ export default function DashboardLayout({ menuItems }) {
             <Outlet />
           </Suspense>
         </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+            background: '#fff',
+            borderTop: '1px solid #f0f0f0',
+            padding: '12px 24px',
+          }}
+        >
+          <Text type="secondary">
+            Shënim: Ky portal është një projekt shkollor universitar dhe mund të përditësohet.
+          </Text>
+        </Footer>
       </Layout>
     </Layout>
   );
